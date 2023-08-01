@@ -10,20 +10,40 @@ import {
   doc,
   getDocs,
   onSnapshot,
+  serverTimestamp,
 } from "firebase/firestore";
 
 function App() {
   const collectionRef = collection(db, "notes");
   const [notes, setNotes] = useState([]);
   const [temp, setTemp] = useState("");
-  let id = nanoid();
+  let Id = nanoid();
+  const [timestamp, setTimestamp] = useState(null);
+  const convertToTimestamp = (timestampString) => {
+    return new Date(timestampString);
+  };
+  notes.sort((a, b) => {
+    const timestampA = convertToTimestamp(a.timestamp);
+    const timestampB = convertToTimestamp(b.timestamp);
+    return timestampB - timestampA;
+  });
 
   useEffect(() => {
     const unsub = onSnapshot(collectionRef, (QuerySnapshot) => {
       try {
         const items = [];
         QuerySnapshot.forEach((doc) => {
-          items.push(doc.data());
+          const timestampData = doc.data().timestamp;
+          const date = new Date(
+            timestampData.seconds * 1000 + timestampData.nanoseconds / 1000000
+          );
+          setTimestamp(date);
+          const itemData = {
+            ...doc.data(),
+            id: doc.id,
+            timestamp: date,
+          };
+          items.push(itemData);
         });
         setNotes(items);
         console.log("Real-time update received.");
@@ -38,8 +58,8 @@ function App() {
 
   const storeNotes = async () => {
     await addDoc(collection(db, "notes"), {
-      id: id,
       note: temp,
+      timestamp: serverTimestamp(),
     });
     setTemp("");
   };
@@ -47,8 +67,7 @@ function App() {
   const handleDelete = async (id) => {
     try {
       const userDoc = doc(db, "notes", id);
-      console.log(id);
-      await deleteDoc(userDoc)
+      await deleteDoc(userDoc);
     } catch (error) {
       console.log("Error deleting document:", error);
     }
@@ -58,21 +77,6 @@ function App() {
     <div className="text-center bg-[#0C1030] min-h-screen">
       <h1 className="text-4xl text-white mb-7">NOTES</h1>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10 text-white mx-10">
-        {notes.map((note) => (
-          // eslint-disable-next-line react/jsx-key
-          <div className="relative p-20 bg-[#24294D] rounded-2xl break-all backdrop-blur-xl">
-            <p className="uppercase font-mono">{note.note}</p>
-            <button
-              className="rounded-2xl bg-blue-500 p-2 absolute right-0 bottom-0 mr-4 mb-4"
-              onClick={() => {
-                handleDelete(note.id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-
         <div className="justify-center bg-[#24294D]  rounded-2xl backdrop-blur-xl">
           <textarea
             className="bg-[#24294D] py-8 px-4 rounded-2xl border-none  focus:outline-0 resize-none "
@@ -90,6 +94,23 @@ function App() {
             Save
           </button>
         </div>
+        {notes.map((note) => (
+          <div className="relative p-20 bg-[#24294D] rounded-2xl break-all backdrop-blur-xl">
+            <p className="uppercase font-mono">{note.note}</p>
+            <p className="font-mono p-2 absolute left-0 bottom-0 mr-4 mb-4">
+              {note.timestamp.toLocaleString()}
+            </p>
+            <button
+              className="rounded-2xl bg-blue-500 p-2 absolute right-0 bottom-0 mr-4 mb-4"
+              onClick={() => {
+                handleDelete(note.id);
+              }}
+            >
+              Delete
+            </button>
+            
+          </div>
+        ))}
       </div>
     </div>
   );
