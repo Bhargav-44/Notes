@@ -13,7 +13,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={!newUser?(<Login/>):(<Signup/>)} />
+          <Route path="/" element={!newUser?(<Signup/>):(<Login/>)} />
           <Route path="/notes" element={<Notes />} />
         </Routes>
       </BrowserRouter>
