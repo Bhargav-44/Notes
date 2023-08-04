@@ -26,10 +26,11 @@ function Notes() {
           <h1 className="text-4xl text-white mb-7">{filteredPerson.name}'s Notes</h1>
         ))}
       <button
-        className="rounded-2xl bg-blue-500 p-2 absolute right-0 top-0 mr-4 mt-4 text-white"
+        className="rounded-2xl bg-blue-500 p-2 absolute right-0 top-0 mr-4 mt-4 text-white "
         onClick={logOut}
       >
-        Logout
+      <span className="hidden lg:inline-block">Logout</span>
+
       </button>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-10 text-white mx-10">
         <div className="justify-center bg-[#24294D]  rounded-2xl backdrop-blur-xl">
