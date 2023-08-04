@@ -42,6 +42,7 @@ const AppProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [temp, setTemp] = useState("");
   const [timestamp, setTimestamp] = useState(null);
+  const [newUser, setNewUser] = useState(false)
   const convertToTimestamp = (timestampString) => {
     return new Date(timestampString);
   };
@@ -56,7 +57,8 @@ const AppProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [curUser, setCurUser] = useState("");
   const [error, setError] = useState(false);
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
+
 
   const storeUserData = async (name, email, password) => {
     const docRef = await addDoc(collection(db, "users"), {
@@ -209,7 +211,8 @@ const AppProvider = ({ children }) => {
         people,
         error,
         submitted,
-        pop
+        pop,
+        newUser, setNewUser
         
       }}
     >

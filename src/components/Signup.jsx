@@ -11,12 +11,16 @@ const SignUp = () => {
     setEmail,
     setPassword,
     setName,
-    submitted
+    submitted,
+    newUser, setNewUser
   } = useGlobalContext();
 
-  return (
-    !submitted?(<div className="flex flex-col items-center">
-      <form class="form flex flex-col items-center gap-4" onSubmit={handleSubmit}>
+  return !submitted ? (
+    <div className="flex flex-col items-center">
+      <form
+        class="form flex flex-col items-center gap-4"
+        onSubmit={handleSubmit}
+      >
         <input
           class="input"
           type="text"
@@ -45,10 +49,12 @@ const SignUp = () => {
           <span class="button_top"> Submit</span>
         </button>
         <p class="signin">
-          Already have an acount ? <a href="/">Sign In</a>{" "}
+          Already have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(false)}>Sign In</span>
         </p>
       </form>
-    </div>):(<Notes/>)
+    </div>
+  ) : (
+    <Notes />
   );
 };
 

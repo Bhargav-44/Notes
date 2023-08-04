@@ -12,7 +12,9 @@ const Login = () => {
     submitted,
     error,
     pop,
+    newUser, setNewUser
   } = useGlobalContext();
+
 
   return (
     <>
@@ -43,7 +45,7 @@ const Login = () => {
               <span className="button_top">Login</span>
             </button>
             <p class="signin">
-              Don't have an acount ? <a href="/signup">Sign Up</a>{" "}
+              Don't have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(true)}>Sign Up</span>{" "}
             </p>
           </form>
         </div>
