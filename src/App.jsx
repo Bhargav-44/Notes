@@ -20,7 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/notes"
-            element={submitted ? <Notes/> : <Navigate to="/" replace />}
+            element={<Notes/>}
           />
         </Routes>
       </BrowserRouter>
