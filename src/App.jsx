@@ -18,7 +18,7 @@ function App() {
         </Routes>
       </BrowserRouter> */}
       {!newUser? (<Login/>) : (<Signup/>)}
-      {submitted && <Notes/>}
+      {/* {submitted && <Notes/>} */}
     </>
   );
 }

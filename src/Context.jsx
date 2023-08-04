@@ -85,7 +85,8 @@ const AppProvider = ({ children }) => {
         console.log(error);
       });
 
-    storeUserData(name, email, password);
+    if (!check && password.length >= 8){storeUserData(name, email, password);}
+    
     setName("");
     setEmail("");
     setPassword("");
@@ -103,6 +104,7 @@ const AppProvider = ({ children }) => {
         console.log("Current user:", auth.currentUser.email);
         console.log(curUser);
         setSubmitted(true)
+        setCheck("")
         setError(false)
         
         
@@ -119,7 +121,20 @@ const AppProvider = ({ children }) => {
     setPassword("");
     readUser();
   };
+  const [check , setCheck] = useState("")
 
+  useEffect(()=> {
+    const checkEmail = (email) => {
+      people.forEach((el) => {
+        if (el.email === email) {
+          setCheck('Email already in use');
+          setSubmitted(false);
+          
+        }
+      });
+    };
+    return checkEmail(email)
+  },[email])
 
   useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -212,7 +227,9 @@ const AppProvider = ({ children }) => {
         error,
         submitted,
         pop,
-        newUser, setNewUser
+        newUser, setNewUser,
+        setSubmitted,
+        check
         
       }}
     >
