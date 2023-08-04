@@ -7,16 +7,18 @@ import { useGlobalContext } from "./Context";
 
 function App() {
 
-  const {newUser, setNewUser} = useGlobalContext()
+  const {newUser, setNewUser, submitted} = useGlobalContext()
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
-          <Route path="/" element={!newUser?(<Login/>):(<Signup/>)} />
+          <Route path="/" element={!newUser?(<Signup/>):(<Login/>)} />
           <Route path="/notes" element={<Notes />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      {!newUser? (<Login/>) : (<Signup/>)}
+      {submitted && <Notes/>}
     </>
   );
 }
