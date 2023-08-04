@@ -45,7 +45,7 @@ const Login = () => {
               <span className="button_top">Login</span>
             </button>
             <p class="signin">
-              Don't have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(true)}>Sign Up</span>{" "}
+              Don't have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(false)}>Sign Up</span>{" "}
             </p>
           </form>
         </div>
