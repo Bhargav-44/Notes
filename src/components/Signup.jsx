@@ -49,7 +49,7 @@ const SignUp = () => {
           <span class="button_top"> Submit</span>
         </button>
         <p class="signin">
-          Already have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(true)}  onTouchStart={() => setNewUser(true)}>Sign In</span>
+          Already have an acount ? <span className="text-blue-700 underline cursor-pointer" onClick={()=>setNewUser(false)} onTouchStart={()=>setNewUser(false)}>Sign In</span>
         </p>
       </form>
     </div>
