@@ -1,2 +1,2 @@
 # Notes
-Worst repo for real!
+Personalized notes
