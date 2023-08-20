@@ -123,6 +123,37 @@ const AppProvider = ({ children }) => {
     setPassword("");
     readUser();
   };
+// #########################################################################################//
+const [editingNoteId, setEditingNoteId] = useState(null);
+
+  const handleEdit = (id) => {
+    setEditingNoteId(id);
+    const noteToEdit = notes.find((note) => note.id === id);
+    if (noteToEdit) {
+      setTemp(noteToEdit.note);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingNoteId(null);
+    setTemp("");
+  };
+
+  const handleUpdateNote = async () => {
+    try {
+      if (editingNoteId) {
+        const noteDocRef = doc(db, "notes", editingNoteId);
+        await updateDoc(noteDocRef, {
+          note: temp,
+        });
+        setEditingNoteId(null);
+        setTemp("");
+      }
+    } catch (error) {
+      console.log("Error updating note:", error);
+    }
+  };
+// #####################################################################################################3//
   const [check , setCheck] = useState("")
 
   useEffect(()=> {
