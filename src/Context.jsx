@@ -5,6 +5,7 @@ import {
   collection,
   addDoc,
   deleteDoc,
+  updateDoc,
   QuerySnapshot,
   doc,
   getDocs,
@@ -152,6 +153,21 @@ const [editingNoteId, setEditingNoteId] = useState(null);
     } catch (error) {
       console.log("Error updating note:", error);
     }
+  };
+// LOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOLOL //
+  const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const addTag = (tag) => {
+    if (!tags.includes(tag)) {
+      setTags([...tags, tag]);
+    }
+  };
+
+  const removeTag = (tag) => {
+    const updatedTags = tags.filter((t) => t !== tag);
+    setTags(updatedTags);
+    setSelectedTags(selectedTags.filter((t) => t !== tag));
   };
 // #####################################################################################################3//
   const [check , setCheck] = useState("")
