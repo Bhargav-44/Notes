@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Add your CSS links or styles here -->
+<!-- Add your CSS links or styles here -->
 </head>
 <body>
     <header>
@@ -52,6 +52,26 @@
                     </ul>
                 </li>
             </ul>
+        </section>
+        <section id="Techstack">
+            <h2>Tech Stack used</h2>
+            <p>The Personalized Notes Web App is built using the following technologies:</p>
+                <ul>
+                    <li>Vite.js</li>
+                    <li>React.js</li>
+                    <li>Tailwind CSS</li>
+                    <li>Axios</li>
+                </ul>
+        </section>
+        <section id="Usage Tips & Tricks">
+            <h2>Usage Tips & Tricks</h2>
+            <p>Here are a few tips and tricks for using the Personalized Notes Web App:</p>
+                <ul>
+                    <li>Use tags to organize your notes. This will make it easier to find the notes you need when you need them.</li>
+                    <li>Use the search bar to quickly find specific notes.</li>
+                    <li>Use the different templates to create notes for different purposes.</li>
+                    <li>Share your notes with others to collaborate on projects or simply share your thoughts.</li>
+                </ul>
         </section>
         <!-- Add more sections for installation, usage, tech stack, tips, etc. -->
     </main>
