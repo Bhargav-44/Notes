@@ -73,6 +73,27 @@
                     <li>Share your notes with others to collaborate on projects or simply share your thoughts.</li>
                 </ul>
         </section>
+        <section id="Currently Planned features">
+            <h2>Currently Planned features</h2>
+            <p>We have some exciting features on our roadmap that we're currently planning to implement:</p>
+                <ul>
+                    <li>Allow users to access and edit their notes without an internet connection.</li>
+                    <li>Development of a mobile version for on-the-go note management.</li>
+                    <li>Integrate AI to suggest note templates or help summarize longer notes.</li>
+                    <li>Expand functionality with integrations to calendars, task management tools, and cloud storage solutions.</li>
+                    <li>Allow users to write and format notes using Markdown for greater flexibility.</li>
+                </ul>
+        </section>
+        <section id="Future Enhancements">
+            <h2>Future Enhancements</h2>
+            <p>We are continuously looking to improve the Personalized Notes Web App. Here are some planned features for future releases:</p>
+                <ul>
+                    <li>Enable users to create and apply custom themes for a more personalized experience.</li>
+                    <li>Introduce voice recognition to facilitate note-taking.</li>
+                    <li>Implement intelligent reminder systems based on note content and deadlines.</li>
+                    <li>Provide users with insights into their note-taking habits and productivity.</li>
+                </ul>
+        </section>
         <!-- Add more sections for installation, usage, tech stack, tips, etc. -->
     </main>
     <footer>
